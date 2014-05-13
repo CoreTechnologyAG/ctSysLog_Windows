@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="nsCtSysLog.ctSyslog">
+    <Position X="4.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAQAgACAAAACAAIAAAAAABAAAIAAGIACAAAA=</HashCode>
+      <FileName>ctSyslog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nsCtSysLog.DefaultConfig">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAgBIIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>DefaultConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nsCtSysLog.EventConfig">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAABAAgBIIAACAAgAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EventConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nsCtSysLog.FileConfig">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAEACAAgBoICAACAABgAACAAAgAAAQAAEAAAAAAAGA=</HashCode>
+      <FileName>FileConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nsCtSysLog.FileMon">
+    <Position X="6.75" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAgAAgAAEAAAAAAAAACEAAAJAAAAA=</HashCode>
+      <FileName>FileMon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nsCtSysLog.Program">
+    <Position X="1" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nsCtSysLog.ctSyslogService">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAEAAAAAAAAAAABAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nsCtSysLog.Syslog">
+    <Position X="6.75" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAgAQAACAAAAAAiAIAAAAEAAgEAAAIAMAAAAACAI=</HashCode>
+      <FileName>Syslog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nsCtSysLog.SyslogConfig">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAACAAAAAAAAAAAAAAAACAQAAAQBAAAAAJAA=</HashCode>
+      <FileName>SyslogConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
