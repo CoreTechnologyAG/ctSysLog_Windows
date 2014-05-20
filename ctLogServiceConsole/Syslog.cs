@@ -61,7 +61,7 @@ namespace nsCtSysLog {
         private String createPROCID() { return "[" + (Thread.CurrentThread.ManagedThreadId).ToString() + "]:"; } // FIXME Try to get a ID here from EventLog
         private String createMSGID() { return "0"; }  // FIXME.. something usefull here??
         private String createSTRUCTDATA() { return "-"; }  // FIXME.. This is fency... never seens something usefull here
-        private String createMESSAGE(String message) { return message.Replace("\n", "\\n"); }
+        private String createMESSAGE(String message) { return message.Replace("\n", ""); }  // TODO Make this Thing work better
         private String createNL() { return "\n"; }
     }
 }

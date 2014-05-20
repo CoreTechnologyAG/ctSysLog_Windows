@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.Configuration;
 using System.Xml;
 
-
 namespace nsCtSysLog {
     public class ctSyslog {
         public static bool debug = true;
