@@ -32,29 +32,29 @@ namespace nsCtSysLog {
             foreach (string s in scSyslogConfig.getMessageFormat()) {
                 switch (s) {
                     case "SP": 
-                        sMessage += sMessage + " "; return;
+                        sMessage += " "; break;
                     case "UNIXTIMESTAMP": 
-                        sMessage += sMessage + UnixTimeStampUTC(); return;
+                        sMessage += UnixTimeStampUTC(); break;
                     case "TIMESTAMP": 
-                        sMessage += sMessage + FormatedTimeStamp("yyyy-MM-ddTHH:mm:ss.ffZ"); return;
+                        sMessage += FormatedTimeStamp("yyyy-MM-ddTHH:mm:ss.ffZ"); break;
                     case "SOURCE":
-                        sMessage += sMessage + createAPPNAME(appname); return;
+                        sMessage += createAPPNAME(appname); break;
                     case "HOST":
-                        sMessage += sMessage + createHOSTNAME(); return;
+                        sMessage += createHOSTNAME(); break;
                     case "MSG":
-                        sMessage += sMessage + createMESSAGE(message); return;
+                        sMessage += createMESSAGE(message); break;
                     case "PROCID":
-                        sMessage += sMessage + createPROCID(); return;
+                        sMessage += createPROCID(); break;
                     case "MSGID":
-                        sMessage += sMessage + createMSGID(); return;
+                        sMessage += createMSGID(); break;
                     case "PRI":
-                        sMessage += sMessage + createPRI(5,3); return;
+                        sMessage += createPRI(5,3); break;
                     case "TYPE":
-                        sMessage += sMessage + type; return;
-                    default: sMessage += s; return;
+                        sMessage += type; break;
+                    default: sMessage += s; break;
                 }
             }
-            sMessage += sMessage + createNL();
+            sMessage += createNL();
             si.sendMessage(sMessage);
         }
 

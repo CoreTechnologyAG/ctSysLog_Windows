@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigMethods.cs" />
+    <Compile Include="SyslogTCP.cs" />
     <Compile Include="ctSyslog.cs" />
     <Compile Include="ctSyslogService.cs">
       <SubType>Component</SubType>
