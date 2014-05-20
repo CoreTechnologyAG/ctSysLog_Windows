@@ -11,7 +11,7 @@ using System.Xml;
 namespace nsCtSysLog {
     public class ctSyslog {
         public static bool debug = true;
-        private static String sVersion = "Version 0.3 Beta";
+        private static String sVersion = "Version 0.4 Beta";
         private static Syslog slObject;
         private static List<FileMon> fma = new List<FileMon>();
         private static List<FileConfig> lFileConfigs = new List<FileConfig>();
@@ -30,16 +30,16 @@ namespace nsCtSysLog {
             nlFileconfigs = xmldocConfiguration.GetElementsByTagName("default");
             if (nlFileconfigs.Count != 1) return;
             dc = new DefaultConfig(nlFileconfigs.Item(0));
-            // Create The Socket to Send the Stuff to our Syslog Server (via UDP so far)
+            // Create The SyslogInterface to Send the Stuff to our Syslog Server
             slObject = new Syslog(slc);
-            slObject.SendMessage("ctSyslog started", dc.getFacility(), dc.getPrio(), "ctsyslog");
-            slObject.SendMessage(sVersion, dc.getFacility(), dc.getPrio(), "ctsyslog");
+            slObject.SendMessage("ctSyslog started", "ctsyslog", slc.getSyslogTag());
+            slObject.SendMessage(sVersion, "ctsyslog", slc.getSyslogTag());
             // Loop all the FileConfig Nodes.
             nlFileconfigs = xmldocConfiguration.GetElementsByTagName("file");
             for (int iCounter = 0; iCounter < nlFileconfigs.Count; iCounter++) {
                 FileConfig fcTemp = new FileConfig(nlFileconfigs.Item(iCounter));
                 //if (debug) Console.WriteLine("Valid " + fcTemp.isValid());
-                if (!fcTemp.isValid()) slObject.SendMessage("ERROR: Invalid File Configuration - " + fcTemp.getFullName(), dc.getFacility(), dc.getPrio(), "ctsyslog");
+                if (!fcTemp.isValid()) slObject.SendMessage("ERROR: Invalid File Configuration - " + fcTemp.getFullName(), "ctsyslog", slc.getSyslogTag());
                 //if (debug) Console.WriteLine(fcTemp.getFileName() + " " + fcTemp.getTag());
                 lFileConfigs.Add(fcTemp);
             }
@@ -80,7 +80,7 @@ namespace nsCtSysLog {
             }
         }
         public void Stop() {
-            slObject.SendMessage("ctSyslog stopping", dc.getFacility(), dc.getPrio(), "ctsyslog");
+            slObject.SendMessage("ctSyslog stopping", "ctsyslog", "ctsyslog");
             slObject.Stop();
         }
         // Handle Events on Windows Eventlog Events
@@ -92,7 +92,7 @@ namespace nsCtSysLog {
             int iFacility = ecTemp.getFacility();
             int iPrio = ecTemp.getPrio();
             // Send the Message to the Syslog-Server
-            slObject.SendMessage(e.Entry.Message, iFacility, iPrio, e.Entry.Source);
+            slObject.SendMessage(e.Entry.Message, e.Entry.Source, ecTemp.getEventTag());
         }
         // Handle Events if a File Changes. We have a FileWatcher for each Logfile we track
         private static void OnChanged(object source, FileSystemEventArgs e) {
@@ -109,7 +109,7 @@ namespace nsCtSysLog {
             // For each Line create e Message for the Syslog Server
             foreach (String sStr in saChangedLines) {
                 if (debug) Console.WriteLine(sStr);
-                slObject.SendMessage(sStr, fcThis.getFacility(), fcThis.getPrio(), fcThis.getTag());
+                slObject.SendMessage(sStr, fcThis.getTag(),fcThis.getTag());
             }
         }
     }

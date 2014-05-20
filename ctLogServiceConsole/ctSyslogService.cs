@@ -12,8 +12,8 @@ using Microsoft.Win32;
 
 namespace nsCtSysLog {
     public partial class ctSyslogService : ServiceBase {
-        //private System.ComponentModel.IContainer components; TODO Remove this
-        private const string sRegKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\CoreTechnology\\ctSyslog";
+        private const string csRegKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\CoreTechnology\\ctSyslog";
+        private const string csDefaultConfigFilename = "config.xml";
         ctSyslog ctService;
         public ctSyslogService() {
             this.ServiceName = "CtSyslogService";
@@ -22,23 +22,19 @@ namespace nsCtSysLog {
             this.AutoLog = true;
         }
         
-        public void Start(string[] args) { OnStart(args); }
-        
+        //public void Start(string[] args) { OnStart(args); } // Maybe Unneeded. Test first if it Runs fine as Service without
         protected override void OnStart(string[] args) {
             if (args.Length > 0) {
                 ctService = new ctSyslog(args[0]);
-                // Store Arg0 for later usage..
-                Registry.SetValue(sRegKey, "", args[0]);
+                Registry.SetValue(csRegKey, "", args[0]);  // Store Arg0 for later usage in the Registry..
             } else {
-                string sRegValue = (string) Registry.GetValue(sRegKey, "", "config.xml");
-                if (sRegValue == null) sRegValue = "config.xml";
+                string sRegValue = (string)Registry.GetValue(csRegKey, "", csDefaultConfigFilename);
+                if (sRegValue == null) sRegValue = csDefaultConfigFilename;
                 ctService = new ctSyslog(sRegValue);
             }
         }
         
-        protected override void OnStop() {
-            ctService.Stop();
-        }
+        protected override void OnStop() { ctService.Stop(); }
 
         static void Main(params string[] args) {
             var service = new ctSyslogService();
@@ -48,7 +44,7 @@ namespace nsCtSysLog {
                 return;
             }
             Console.WriteLine("Running as Console Application");
-            service.Start(args);
+            service.OnStart(args);
             // We now wait for a newline. If a New line is Received, we stop the Progi
             Console.WriteLine("Press <RETURN/ENTER> to Stop the Programm");
             string input = Console.ReadLine();
@@ -56,8 +52,6 @@ namespace nsCtSysLog {
 
         }
 
-        private void InitializeComponent() {
-
-        }
+       // private void InitializeComponent() { } // Do we need this?
     }
 }

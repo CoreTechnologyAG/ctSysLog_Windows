@@ -10,20 +10,14 @@ namespace nsCtSysLog {
     class FileConfig {
         private String sFullName;
         private String sFileName;
-        private int iPrio;
-        private int iFacility;
         private String sTagName;
         private String sBasePath;
         private bool bIsValid = false;
         private bool bDoComplete = false;
         // Constructor
         public FileConfig(XmlNode nlFileConfig) {
-            sFullName = nlFileConfig.Attributes["filename"].Value;
-            iPrio = int.Parse(nlFileConfig.Attributes["prio"].Value);
-            iFacility = int.Parse(nlFileConfig.Attributes["facility"].Value);
-            if (nlFileConfig.Attributes["complete"] != null) {
-                bDoComplete = bool.Parse(nlFileConfig.Attributes["complete"].Value);
-            }
+            sFullName = ConfigMethods.getStringAttributeFromConfig(nlFileConfig, "file", "filename", true,"");
+            bDoComplete = ConfigMethods.getBoolAttributeFromConfig(nlFileConfig, "file", "complete", false, false);
             sTagName = nlFileConfig.InnerText;
             // Check if the File Exists and also Save the Basepath for this
             FileInfo fiTempCheck = new FileInfo(sFullName);
@@ -42,8 +36,6 @@ namespace nsCtSysLog {
         // Setters and Getters
         public bool isFileName(String sFilename) { return this.sFileName.Equals(sFileName, StringComparison.OrdinalIgnoreCase); }
         public bool isFullFile(String sFullName) { return this.sFullName.Equals(sFullName, StringComparison.OrdinalIgnoreCase); }
-        public int getFacility() { return iFacility; }
-        public int getPrio() { return iPrio;}
         public String getTag() { return sTagName; }
         public bool isValid() { return bIsValid; }
         public bool doComplete() { return bDoComplete; }

@@ -8,7 +8,7 @@
   <eventlog eventlog="System" facility="5" prio="3">SysTag</eventlog>
   <eventlog eventlog="Security" facility="5" prio="3">SysTag</eventlog>
   <!-- Via Logstash - Direkt -->
-  <syslogserver ip="10.0.100.181" port="6688" hostname="devserver">dotnet</syslogserver>
+  <syslogserver ip="10.0.100.181" port="6688" hostname="devserver" service="udp">dotnet</syslogserver>
   <!-- Via rsyslog -->
   <!-- <syslogserver ip="10.0.100.181" port="514" hostname="devserver">dotnet</syslogserver> -->
 </ctConfig>

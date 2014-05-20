@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigMethods.cs" />
     <Compile Include="ctSyslog.cs" />
     <Compile Include="ctSyslogService.cs">
       <SubType>Component</SubType>
@@ -81,6 +82,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Syslog.cs" />
     <Compile Include="SyslogConfig.cs" />
+    <Compile Include="SyslogInterface.cs" />
+    <Compile Include="SyslogUDP.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
