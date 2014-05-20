@@ -14,14 +14,16 @@ namespace nsCtSysLog {
         public Syslog(SyslogConfig scSyslogConfig) {
             this.scSyslogConfig = scSyslogConfig;
             if (scSyslogConfig.getService().Equals("tcp", StringComparison.OrdinalIgnoreCase)) {    // TCP
-
+                SyslogTCP oTCP = new SyslogTCP();
+                oTCP.init(scSyslogConfig.getSyslogIP(), scSyslogConfig.getSyslogPort());
+                si = oTCP;
             } else if (scSyslogConfig.getService().Equals("relp", StringComparison.OrdinalIgnoreCase)) {  // RELP ??
                 // TODO FIXME NOT YET IMPLEMENTED
                 Environment.Exit(99);
             } else {    // UDP as Fallback
-                SyslogUDP sUDP = new SyslogUDP();
-                sUDP.init(scSyslogConfig.getSyslogIP(), scSyslogConfig.getSyslogPort());
-                si = sUDP;
+                SyslogUDP oUDP = new SyslogUDP();
+                oUDP.init(scSyslogConfig.getSyslogIP(), scSyslogConfig.getSyslogPort());
+                si = oUDP;
             }
         }
 
