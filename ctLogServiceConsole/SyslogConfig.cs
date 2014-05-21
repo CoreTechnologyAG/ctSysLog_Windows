@@ -13,6 +13,8 @@ namespace nsCtSysLog{
         private int iSyslogPort;
         private string sService;
         private string[] saMessageFormat;
+        private string sTimeFormat;
+        private int iMaxAppnameLength;
         // Constructor
         public SyslogConfig(XmlNode nlConfigFile) {
             sSyslogIP = ConfigMethods.getStringAttributeFromConfig(nlConfigFile,"syslogconfig","ip", true,"");
@@ -20,6 +22,8 @@ namespace nsCtSysLog{
             sHostname = ConfigMethods.getStringAttributeFromConfig(nlConfigFile, "syslogconfig", "hostname", false, "noset"); 
             sService = ConfigMethods.getStringAttributeFromConfig(nlConfigFile, "syslogconfig", "service",false,"udp");
             saMessageFormat = ConfigMethods.getStringAttributeFromConfig(nlConfigFile, "syslogconfig", "format", false, "TIMESTAMP,SP,HOST,SP,SOURCE,SP,TYPE,SP,MSG").Split(',');
+            sTimeFormat = ConfigMethods.getStringAttributeFromConfig(nlConfigFile,"syslogconfig", "timeformat" , false, "yyyy-MM-ddTHH:mm:ss.ffZ");
+            iMaxAppnameLength = ConfigMethods.getIntAttributeFromConfig(nlConfigFile, "syslogconfig", "appnamelength", false, 255);
             sSyslogTag = nlConfigFile.InnerText;
         }
         // Setters and Getters
@@ -29,6 +33,7 @@ namespace nsCtSysLog{
         public string getHostname() { return sHostname;  }
         public string getService() { return sService;  }
         public string[] getMessageFormat() { return saMessageFormat; }
-
+        public string getTimeFormat() { return sTimeFormat; }
+        public int getMaxAppnameLength() { return iMaxAppnameLength; }
     }
 }

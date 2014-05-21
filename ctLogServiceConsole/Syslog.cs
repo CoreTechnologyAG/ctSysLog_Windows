@@ -36,7 +36,7 @@ namespace nsCtSysLog {
                     case "UNIXTIMESTAMP": 
                         sMessage += UnixTimeStampUTC(); break;
                     case "TIMESTAMP": 
-                        sMessage += FormatedTimeStamp("yyyy-MM-ddTHH:mm:ss.ffZ"); break;
+                        sMessage += FormatedTimeStamp(scSyslogConfig.getTimeFormat()); break;
                     case "SOURCE":
                         sMessage += createAPPNAME(appname); break;
                     case "HOST":
@@ -63,18 +63,16 @@ namespace nsCtSysLog {
         }
 
         private String createPRI(int Facility, int Severity) { return "<" + (Facility * 8 + Severity).ToString() + ">"; }
-        //private String createVERSION() { return "1"; }
         private string createSP() { return " "; }
         private string createTIMESTAMP() { return UnixTimeStampUTC().ToString(); }
         private string createHOSTNAME() { return scSyslogConfig.getHostname(); }
         private string createAPPNAME(String sAppname) {
             String sNewAppName = sAppname.Replace(" ", "").Replace("-", "");
-            //if (sNewAppName.Length > 16) sNewAppName = sNewAppName.Substring(0, 16);
+            if (sNewAppName.Length > scSyslogConfig.getMaxAppnameLength()) sNewAppName = sNewAppName.Substring(0, scSyslogConfig.getMaxAppnameLength());
             return sNewAppName;
         }
         private string createPROCID() { return "[" + (Thread.CurrentThread.ManagedThreadId).ToString() + "]:"; } // FIXME Try to get a ID here from EventLog
         private string createMSGID() { return "0"; }  // FIXME.. something usefull here??
-        private string createSTRUCTDATA() { return "-"; }  // FIXME.. This is fency... never seens something usefull here
         private string createMESSAGE(String message) { return message.Replace("\n", ""); }  // TODO Make this Thing work better
         private string createNL() { return "\n"; }
 
@@ -86,7 +84,7 @@ namespace nsCtSysLog {
         private String FormatedTimeStamp(string sFormat) {
             DateTime dt = new DateTime();
             dt = DateTime.Now.ToUniversalTime();
-            return dt.ToString(sFormat); // "yyyy-MM-ddTHH:mm:ss.ffZ"
+            return dt.ToString(sFormat);  
         }
     }
 }

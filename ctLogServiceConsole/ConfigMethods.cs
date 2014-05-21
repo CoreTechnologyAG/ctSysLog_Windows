@@ -32,7 +32,7 @@ namespace nsCtSysLog {
             return bDefault;
         }
         private static void handleExcepion(Exception e, string sMessage, bool bBailout) {
-            Console.WriteLine(e.ToString());
+            if (bBailout) Console.WriteLine(e.ToString());
             Console.WriteLine(sMessage);
             if (bBailout) Environment.Exit(1);
         }
