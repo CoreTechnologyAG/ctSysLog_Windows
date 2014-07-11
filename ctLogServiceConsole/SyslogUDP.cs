@@ -7,7 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 
 namespace nsCtSysLog {
-    class SyslogUDP : SyslogInterface{
+    class SyslogUDP : SyslogInterface {
         private Socket server = null;
         private IPEndPoint RemoteEndPoint;
 

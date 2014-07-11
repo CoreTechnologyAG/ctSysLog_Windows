@@ -9,7 +9,7 @@ namespace nsCtSysLog {
     class DefaultConfig {
         private String sTag;
         // Constructor
-        public DefaultConfig(XmlNode nlConfigFile) { sTag = nlConfigFile.InnerText; }
+        public DefaultConfig(XmlNode nlConfigFile) { sTag = nlConfigFile.InnerText.Trim().TrimEnd(System.Environment.NewLine.ToCharArray()); }
         // Setters and Getters
         public String getTag() { return sTag; }
     }

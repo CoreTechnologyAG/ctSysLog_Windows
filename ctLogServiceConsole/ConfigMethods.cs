@@ -9,7 +9,7 @@ namespace nsCtSysLog {
     class ConfigMethods { // Bailout Stuff to Validate / Load the Parameters from the Config
         public static string getStringAttributeFromConfig(XmlNode nlConfig, string sSektion, string sAttrname, bool bNeedToBeSet, string sDefault) {
             try {
-                return nlConfig.Attributes[sAttrname].Value;
+                return nlConfig.Attributes[sAttrname].Value.Trim().TrimEnd(System.Environment.NewLine.ToCharArray());
             } catch (Exception e) {
                 handleExcepion(e, "Config Failure " + sSektion + " -> " + sAttrname + " not found!!", bNeedToBeSet);
             }
@@ -17,7 +17,7 @@ namespace nsCtSysLog {
         }
         public static int getIntAttributeFromConfig(XmlNode nlConfig, string sSektion, string sAttrname, bool bNeedToBeSet, int iDefault) {
             try {
-                return int.Parse(nlConfig.Attributes[sAttrname].Value);
+                return int.Parse(nlConfig.Attributes[sAttrname].Value.Trim().TrimEnd(System.Environment.NewLine.ToCharArray()));
             } catch (Exception e) {
                 handleExcepion(e, "Config Failure " + sSektion + " -> " + sAttrname + " not found or not a number!!" , bNeedToBeSet);
             }
@@ -25,7 +25,7 @@ namespace nsCtSysLog {
         }
         public static bool getBoolAttributeFromConfig(XmlNode nlConfig, string sSektion, string sAttrname, bool bNeedToBeSet, bool bDefault) {
             try {
-                return bool.Parse(nlConfig.Attributes[sAttrname].Value);
+                return bool.Parse(nlConfig.Attributes[sAttrname].Value.Trim().TrimEnd(System.Environment.NewLine.ToCharArray()));
             } catch (Exception e) {
                 handleExcepion(e, "Config Failure " + sSektion + " -> " + sAttrname + " not found or not a boolean!!", bNeedToBeSet);
             }

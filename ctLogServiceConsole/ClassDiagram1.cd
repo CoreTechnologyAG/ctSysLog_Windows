@@ -1,67 +1,97 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="nsCtSysLog.ctSyslog">
-    <Position X="4.75" Y="5" Width="1.5" />
+  <Class Name="nsCtSysLog.ConfigMethods" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQACAAAAAAAQAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>ConfigMethods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nsCtSysLog.ctSyslog" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAQAgACAAAACAAIAAAAAABAAAIAAGIACAAAA=</HashCode>
       <FileName>ctSyslog.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="nsCtSysLog.DefaultConfig">
-    <Position X="6.5" Y="0.5" Width="1.5" />
+  <Class Name="nsCtSysLog.ctSyslogService" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAACAAgBIIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAAABAIAAAAAAAEAAAAAAAAAAABAAAAEAABAAAAAA=</HashCode>
+      <FileName>ctSyslogService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nsCtSysLog.DefaultConfig" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>DefaultConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="nsCtSysLog.EventConfig">
-    <Position X="10" Y="0.5" Width="1.5" />
+  <Class Name="nsCtSysLog.EventConfig" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAAAABAAgBIIAACAAgAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EventConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="nsCtSysLog.FileConfig">
-    <Position X="11.75" Y="0.5" Width="1.5" />
+  <Class Name="nsCtSysLog.FileConfig" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAEACAAgBoICAACAABgAACAAAgAAAQAAEAAAAAAAGA=</HashCode>
+      <HashCode>IAAEACAAABgACAACAABgAACAAAgAAAQAAEAAAAAAAGA=</HashCode>
       <FileName>FileConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="nsCtSysLog.FileMon">
-    <Position X="6.75" Y="4" Width="2.5" />
+  <Class Name="nsCtSysLog.FileMon" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAAAAAAAAAgAAgAAEAAAAAAAAACEAAAJAAAAA=</HashCode>
       <FileName>FileMon.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="nsCtSysLog.Program">
-    <Position X="1" Y="3.25" Width="1.5" />
+  <Class Name="nsCtSysLog.ProjectInstaller" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
+      <HashCode>AAAAAAAAACAAAAAACCCAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProjectInstaller.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="nsCtSysLog.ctSyslogService">
-    <Position X="2.75" Y="5" Width="1.5" />
+  <Class Name="nsCtSysLog.Syslog" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAEAAAAAAAAAAABAAAAEAAAAAAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="nsCtSysLog.Syslog">
-    <Position X="6.75" Y="7.25" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>gAAAAgAQAACAAAAAAiAIAAAAEAAgEAAAIAMAAAAACAI=</HashCode>
+      <HashCode>gAAAAgAQAACAAAQAAiAIAAAAEAAgEAAAIAAAAEABCAA=</HashCode>
       <FileName>Syslog.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="nsCtSysLog.SyslogConfig">
-    <Position X="8.25" Y="0.5" Width="1.5" />
+  <Class Name="nsCtSysLog.SyslogConfig" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAACAAAAAAAAAAAAAAAACAQAAAQBAAAAAJAA=</HashCode>
+      <HashCode>EAAAAAAAAACAAAAAAAAQgACAAAACBQAAAQBCQAEAZAA=</HashCode>
       <FileName>SyslogConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="nsCtSysLog.SyslogTCP" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABgAAAAAAgAAAAAQIEAAAAAAAAAKA=</HashCode>
+      <FileName>SyslogTCP.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.362" />
+  </Class>
+  <Class Name="nsCtSysLog.SyslogUDP" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAgAAAAAAIAAAEAAAAAAAI=</HashCode>
+      <FileName>SyslogUDP.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="nsCtSysLog.SyslogInterface" Collapsed="true">
+    <Position X="8.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAgAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>SyslogInterface.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

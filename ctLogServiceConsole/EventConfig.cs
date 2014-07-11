@@ -13,10 +13,10 @@ namespace nsCtSysLog {
         private int iPrio;
         // Constructor
         public EventConfig(XmlNode nlFileConfig) {
-            sEventLog = nlFileConfig.Attributes["eventlog"].Value;
-            iPrio = int.Parse(nlFileConfig.Attributes["prio"].Value);
-            iFacility = int.Parse(nlFileConfig.Attributes["facility"].Value);
-            sEventTag = nlFileConfig.InnerText;
+            sEventLog = ConfigMethods.getStringAttributeFromConfig(nlFileConfig, "eventlog", "eventlog", true, "");
+            iPrio = ConfigMethods.getIntAttributeFromConfig(nlFileConfig, "eventlog", "prio", false, 5);
+            iFacility = ConfigMethods.getIntAttributeFromConfig(nlFileConfig, "eventlog", "facility", false, 5); 
+            sEventTag = nlFileConfig.InnerText.Trim().TrimEnd(System.Environment.NewLine.ToCharArray());
         }
         public static EventConfig getEventConfigFor(List<EventConfig> lEventConfigs,String sEvent) {
             foreach (EventConfig ecTemp in lEventConfigs) { 

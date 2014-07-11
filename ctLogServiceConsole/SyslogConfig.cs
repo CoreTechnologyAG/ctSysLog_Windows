@@ -19,12 +19,12 @@ namespace nsCtSysLog{
         public SyslogConfig(XmlNode nlConfigFile) {
             sSyslogIP = ConfigMethods.getStringAttributeFromConfig(nlConfigFile,"syslogconfig","ip", true,"");
             iSyslogPort = ConfigMethods.getIntAttributeFromConfig(nlConfigFile, "syslogconfig", "port", false, 514);
-            sHostname = ConfigMethods.getStringAttributeFromConfig(nlConfigFile, "syslogconfig", "hostname", false, "noset"); 
+            sHostname = ConfigMethods.getStringAttributeFromConfig(nlConfigFile, "syslogconfig", "hostname", false, "notset"); 
             sService = ConfigMethods.getStringAttributeFromConfig(nlConfigFile, "syslogconfig", "service",false,"udp");
             saMessageFormat = ConfigMethods.getStringAttributeFromConfig(nlConfigFile, "syslogconfig", "format", false, "TIMESTAMP,SP,HOST,SP,SOURCE,SP,TYPE,SP,MSG").Split(',');
             sTimeFormat = ConfigMethods.getStringAttributeFromConfig(nlConfigFile,"syslogconfig", "timeformat" , false, "yyyy-MM-ddTHH:mm:ss.ffZ");
             iMaxAppnameLength = ConfigMethods.getIntAttributeFromConfig(nlConfigFile, "syslogconfig", "appnamelength", false, 255);
-            sSyslogTag = nlConfigFile.InnerText;
+            sSyslogTag = nlConfigFile.InnerText.Trim().TrimEnd(System.Environment.NewLine.ToCharArray());
         }
         // Setters and Getters
         public string getSyslogIP() { return sSyslogIP; }

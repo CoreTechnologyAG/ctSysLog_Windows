@@ -18,7 +18,7 @@ namespace nsCtSysLog {
         public FileConfig(XmlNode nlFileConfig) {
             sFullName = ConfigMethods.getStringAttributeFromConfig(nlFileConfig, "file", "filename", true,"");
             bDoComplete = ConfigMethods.getBoolAttributeFromConfig(nlFileConfig, "file", "complete", false, false);
-            sTagName = nlFileConfig.InnerText;
+            sTagName = nlFileConfig.InnerText.Trim().TrimEnd(System.Environment.NewLine.ToCharArray());
             // Check if the File Exists and also Save the Basepath for this
             FileInfo fiTempCheck = new FileInfo(sFullName);
             if (fiTempCheck.Exists) {

@@ -1,14 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ctConfig>
-  <default facility="1" prio="3">ctSyslog</default>
-  <file filename="C:\Thomas.txt" facility="5" prio="3" complete="false">ThomasTag</file>
-  <nofile filename="C:\Windows\WindowsUpdate.log" facility="2" prio="3" complete="false">MoTag</nofile>
-  <nofile filename="C:\Flubber.txt" facility="5" prio="3">FlubTag</nofile>
-  <eventlog eventlog="Application" facility="5" prio="3">AppTag</eventlog>
-  <eventlog eventlog="System" facility="5" prio="3">SysTag</eventlog>
-  <eventlog eventlog="Security" facility="5" prio="3">SecTag</eventlog>
+  <default 
+    facility="1" prio="3">
+    ctSyslog
+  </default>
+  <file
+    filename="C:\Thomas.txt" 
+    facility="5" prio="3" 
+    complete="false">
+    FileTag
+  </file>
+  <dir 
+    dirname="C:\Thomas" 
+    facility="5" prio="3">
+    DirTag
+  </dir>
+  <eventlog 
+    eventlog="Application" facility="5" prio="3">
+    AppTag
+  </eventlog>
+  <eventlog 
+    eventlog="System" facility="5" prio="3">
+    SysTag
+  </eventlog>
+  <eventlog 
+    eventlog="Security" facility="5" prio="3">
+    SecTag
+  </eventlog>
   <!-- Via Logstash - Direkt -->
-  <syslogserver ip="10.0.100.181" port="6688" hostname="devserver" service="udp" format="PRI,TIMESTAMP,SP,HOST,SP,SOURCE,:,SP,TYPE,SP,MSG" timeformat="yyyyMMddHHmmssff">dotnet</syslogserver>
+  <syslogserver 
+    ip="10.0.100.181"
+    port="6688" 
+    hostname="devserver" 
+    service="udp" 
+    format="PRI,TIMESTAMP,SP,HOST,SP,SOURCE,:,SP,TYPE,SP,MSG"
+    timeformat="yyyy-MM-ddTHH:mm:ss.ffZ"
+    appnamelength="100">
+    dotnet
+  </syslogserver>
   <!-- Via rsyslog -->
   <!-- <syslogserver ip="10.0.100.181" port="514" hostname="devserver" service="udp">dotnet</syslogserver> -->
 </ctConfig>

@@ -8,24 +8,46 @@ using System.Net.Sockets;
 
 namespace nsCtSysLog {
     class SyslogTCP : SyslogInterface{
-        private Socket server = null;
-        private IPEndPoint RemoteEndPoint;
+        private TcpClient oTcpClient;
+        private NetworkStream oNetworkStream;
+        private String sHostname;
+        private int iPort;
 
-        public bool init(String sIP, int iPort) {
-            RemoteEndPoint = new IPEndPoint(IPAddress.Parse(sIP), iPort);
-            server = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            return true;
+        public bool init(String sHostname, int iPort) {
+            this.sHostname = sHostname;
+            this.iPort = iPort;
+            return connect();
         }
         public bool sendMessage(String sMessage) {
-            byte[] data = Encoding.ASCII.GetBytes(sMessage);
-            server.SendTo(data, data.Length, SocketFlags.None, RemoteEndPoint);
-            return true;
+            if (oTcpClient == null || !oTcpClient.Connected) { // Not Connected Try to Reconnect !!
+                shutdown();
+                connect();
+            }
+            if (oTcpClient != null && oTcpClient.Connected) { // Still not connected.. Fail / Bail
+                try {
+                    byte[] data = Encoding.ASCII.GetBytes(sMessage);
+                    oNetworkStream.Write(data, 0, data.Length);
+                    return true;
+                } catch (Exception eIgnored) { return false; }
+            } else {
+                return false;
+            }
+        }
+
+        private bool connect() {
+            try {
+                oTcpClient = new TcpClient(sHostname, iPort);
+                oNetworkStream = oTcpClient.GetStream();
+                return true;
+            } catch (Exception eIgnored) {
+                return false;
+            }
         }
 
         public bool shutdown() {
+            try { oNetworkStream.Close(); } catch (Exception eIgnored) { } oNetworkStream = null;
+            try { oTcpClient.Close(); } catch (Exception eIgnored) { } oTcpClient = null; 
             return true;
         }
-
-       
     }
 }
