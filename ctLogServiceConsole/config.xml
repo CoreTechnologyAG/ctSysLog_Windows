@@ -4,29 +4,35 @@
     facility="1" prio="3">
     ctSyslog
   </default>
-  <file
-    filename="C:\Thomas.txt" 
-    facility="5" prio="3" 
-    complete="false">
-    FileTag
-  </file>
-  <dir 
-    dirname="C:\Thomas" 
-    facility="5" prio="3">
-    DirTag
-  </dir>
-  <eventlog 
-    eventlog="Application" facility="5" prio="3">
-    AppTag
-  </eventlog>
-  <eventlog 
-    eventlog="System" facility="5" prio="3">
-    SysTag
-  </eventlog>
-  <eventlog 
-    eventlog="Security" facility="5" prio="3">
-    SecTag
-  </eventlog>
+  <files>
+    <file
+      filename="C:\Thomas.txt" 
+      facility="5" prio="3" 
+      complete="false">
+      FileTag
+    </file>
+  </files>
+  <dirs>
+    <dir dirname="C:\Thomas" 
+      filefilter="log"
+      facility="5" prio="3">
+      DirTag
+    </dir>
+  </dirs>
+  <eventlogs>
+    <eventlog 
+      eventlog="Application" facility="5" prio="3">
+      AppTag
+    </eventlog>
+    <eventlog 
+      eventlog="System" facility="5" prio="3">
+      SysTag
+    </eventlog>
+    <eventlog 
+      eventlog="Security" facility="5" prio="3">
+      SecTag
+    </eventlog>
+  </eventlogs>
   <!-- Via Logstash - Direkt -->
   <syslogserver 
     ip="10.0.100.181"
