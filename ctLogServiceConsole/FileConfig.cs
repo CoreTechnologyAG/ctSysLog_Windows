@@ -15,21 +15,21 @@ namespace nsCtSysLog {
         private bool bIsValid = false;
         private bool bDoComplete = false;
         // Constructor
-        public FileConfig(XmlNode nlFileConfig) {
-            sFullName = ConfigMethods.getStringAttributeFromConfig(nlFileConfig, "file", "filename", true,"");
-            bDoComplete = ConfigMethods.getBoolAttributeFromConfig(nlFileConfig, "file", "complete", false, false);
-            sTagName = nlFileConfig.InnerText.Trim().TrimEnd(System.Environment.NewLine.ToCharArray());
+        public FileConfig(XmlNode oFileConfigNode) {
+            sFullName = ConfigMethods.getStringAttributeFromConfig(oFileConfigNode, "file", "filename", true, "");
+            bDoComplete = ConfigMethods.getBoolAttributeFromConfig(oFileConfigNode, "file", "complete", false, false);
+            sTagName = oFileConfigNode.InnerText.Trim().TrimEnd(System.Environment.NewLine.ToCharArray());
             // Check if the File Exists and also Save the Basepath for this
-            FileInfo fiTempCheck = new FileInfo(sFullName);
-            if (fiTempCheck.Exists) {
+            FileInfo oFileInfoTempCheck = new FileInfo(sFullName);
+            if (oFileInfoTempCheck.Exists) {
                 bIsValid = true;
-                sBasePath = fiTempCheck.DirectoryName;
-                sFileName = fiTempCheck.Name;
+                sBasePath = oFileInfoTempCheck.DirectoryName;
+                sFileName = oFileInfoTempCheck.Name;
             }
         }
-        public static FileConfig getFileConfig(List<FileConfig> lFileConfigs,String sFileName) {
-            foreach (FileConfig fcTemp in lFileConfigs) {
-                if (fcTemp.getFullName().Equals(sFileName, StringComparison.OrdinalIgnoreCase)) return fcTemp;
+        public static FileConfig getFileConfig(List<FileConfig> oFileConfigList,String sFileName) {
+            foreach (FileConfig oFileConfig in oFileConfigList) {
+                if (oFileConfig.getFullName().Equals(sFileName, StringComparison.OrdinalIgnoreCase)) return oFileConfig;
             }
             return null;
         }

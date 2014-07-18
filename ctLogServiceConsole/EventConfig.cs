@@ -12,15 +12,15 @@ namespace nsCtSysLog {
         private int iFacility;
         private int iPrio;
         // Constructor
-        public EventConfig(XmlNode nlFileConfig) {
-            sEventLog = ConfigMethods.getStringAttributeFromConfig(nlFileConfig, "eventlog", "eventlog", true, "");
-            iPrio = ConfigMethods.getIntAttributeFromConfig(nlFileConfig, "eventlog", "prio", false, 5);
-            iFacility = ConfigMethods.getIntAttributeFromConfig(nlFileConfig, "eventlog", "facility", false, 5); 
-            sEventTag = nlFileConfig.InnerText.Trim().TrimEnd(System.Environment.NewLine.ToCharArray());
+        public EventConfig(XmlNode oFileConfigNode) {
+            sEventLog = ConfigMethods.getStringAttributeFromConfig(oFileConfigNode, "eventlog", "eventlog", true, "");
+            iPrio = ConfigMethods.getIntAttributeFromConfig(oFileConfigNode, "eventlog", "prio", false, 5);
+            iFacility = ConfigMethods.getIntAttributeFromConfig(oFileConfigNode, "eventlog", "facility", false, 5);
+            sEventTag = oFileConfigNode.InnerText.Trim().TrimEnd(System.Environment.NewLine.ToCharArray());
         }
-        public static EventConfig getEventConfigFor(List<EventConfig> lEventConfigs,String sEvent) {
-            foreach (EventConfig ecTemp in lEventConfigs) { 
-                if (ecTemp.getEventLog().Equals(sEvent,StringComparison.OrdinalIgnoreCase)) return ecTemp;
+        public static EventConfig getEventConfigFor(List<EventConfig> oEventConfigList,String sEvent) {
+            foreach (EventConfig oEventConfigTemp in oEventConfigList) {
+                if (oEventConfigTemp.getEventLog().Equals(sEvent, StringComparison.OrdinalIgnoreCase)) return oEventConfigTemp;
             }
             return null;
         }

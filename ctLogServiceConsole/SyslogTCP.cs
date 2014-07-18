@@ -25,10 +25,10 @@ namespace nsCtSysLog {
             }
             if (oTcpClient != null && oTcpClient.Connected) { // Still not connected.. Fail / Bail
                 try {
-                    byte[] data = Encoding.ASCII.GetBytes(sMessage);
-                    oNetworkStream.Write(data, 0, data.Length);
+                    byte[] oData = Encoding.ASCII.GetBytes(sMessage);
+                    oNetworkStream.Write(oData, 0, oData.Length);
                     return true;
-                } catch (Exception eIgnored) { return false; }
+                } catch (Exception) { return false; }
             } else {
                 return false;
             }
@@ -39,14 +39,14 @@ namespace nsCtSysLog {
                 oTcpClient = new TcpClient(sHostname, iPort);
                 oNetworkStream = oTcpClient.GetStream();
                 return true;
-            } catch (Exception eIgnored) {
+            } catch (Exception) {
                 return false;
             }
         }
 
         public bool shutdown() {
-            try { oNetworkStream.Close(); } catch (Exception eIgnored) { } oNetworkStream = null;
-            try { oTcpClient.Close(); } catch (Exception eIgnored) { } oTcpClient = null; 
+            try { oNetworkStream.Close(); } catch (Exception) { } oNetworkStream = null;
+            try { oTcpClient.Close(); } catch (Exception) { } oTcpClient = null; 
             return true;
         }
     }

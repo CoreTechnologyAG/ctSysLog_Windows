@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 using System.Xml;
 
 namespace nsCtSysLog {
-    class ConfigMethods { // Bailout Stuff to Validate / Load the Parameters from the Config
-        public static string getStringAttributeFromConfig(XmlNode nlConfig, string sSektion, string sAttrname, bool bNeedToBeSet, string sDefault) {
+    class ConfigMethods { 
+        public static string getStringAttributeFromConfig(XmlNode oConfigNode, string sSektion, string sAttrname, bool bNeedToBeSet, string sDefault) {
             try {
-                return nlConfig.Attributes[sAttrname].Value.Trim().TrimEnd(System.Environment.NewLine.ToCharArray());
+                return oConfigNode.Attributes[sAttrname].Value.Trim().TrimEnd(System.Environment.NewLine.ToCharArray());
             } catch (Exception e) {
                 handleExcepion(e, "Config Failure " + sSektion + " -> " + sAttrname + " not found!!", bNeedToBeSet);
             }
             return sDefault;
         }
-        public static int getIntAttributeFromConfig(XmlNode nlConfig, string sSektion, string sAttrname, bool bNeedToBeSet, int iDefault) {
+        public static int getIntAttributeFromConfig(XmlNode oConfigNode, string sSektion, string sAttrname, bool bNeedToBeSet, int iDefault) {
             try {
-                return int.Parse(nlConfig.Attributes[sAttrname].Value.Trim().TrimEnd(System.Environment.NewLine.ToCharArray()));
+                return int.Parse(oConfigNode.Attributes[sAttrname].Value.Trim().TrimEnd(System.Environment.NewLine.ToCharArray()));
             } catch (Exception e) {
                 handleExcepion(e, "Config Failure " + sSektion + " -> " + sAttrname + " not found or not a number!!" , bNeedToBeSet);
             }
             return iDefault;
         }
-        public static bool getBoolAttributeFromConfig(XmlNode nlConfig, string sSektion, string sAttrname, bool bNeedToBeSet, bool bDefault) {
+        public static bool getBoolAttributeFromConfig(XmlNode oConfigNode, string sSektion, string sAttrname, bool bNeedToBeSet, bool bDefault) {
             try {
-                return bool.Parse(nlConfig.Attributes[sAttrname].Value.Trim().TrimEnd(System.Environment.NewLine.ToCharArray()));
+                return bool.Parse(oConfigNode.Attributes[sAttrname].Value.Trim().TrimEnd(System.Environment.NewLine.ToCharArray()));
             } catch (Exception e) {
                 handleExcepion(e, "Config Failure " + sSektion + " -> " + sAttrname + " not found or not a boolean!!", bNeedToBeSet);
             }

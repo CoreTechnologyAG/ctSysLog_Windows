@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ctLogService", "ctLogServiceConsole\ctLogService.csproj", "{07626494-A201-4DD6-BD91-693007436F45}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{58934B4D-632B-47CF-8B1F-5A4AFBEB2EB2}"
+	ProjectSection(SolutionItems) = preProject
+		Definitions.txt = Definitions.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,20 @@
+Object / Variable definitions:
+
+ns	Namespace
+s	string
+b	bool
+i	int
+i32	int32
+i64	int64
+o	Object
+l	long
+a	Array
+sa	string[]
+ia	int[]
+oa	Object[]
+sb	StringBuffer
+
+Vars are defined with CamelCase starting with definition type
+Example:
+A Result we store as String should be stored in a Variable called sResult
+An Array of Integers with Scores aiFootballScores
