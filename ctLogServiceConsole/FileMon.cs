@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace nsCtSysLog
-{
+namespace nsCtSysLog {
     class FileMon {
         private long lFilePosition = 0;
         private bool bAddAllOnStart = false;

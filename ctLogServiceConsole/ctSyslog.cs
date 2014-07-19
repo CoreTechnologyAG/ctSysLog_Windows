@@ -11,7 +11,7 @@ using System.Xml;
 namespace nsCtSysLog {
     public class ctSyslog {
         public static bool bDebug = true;
-        private static String sVersion = "Version 0.7";
+        private static String sVersion = "Version 0.7a";
         private static Syslog oSyslog;
         private static List<FileMon> oFileMonList = new List<FileMon>();
         private static List<FileConfig> oFileConfigList = new List<FileConfig>();
