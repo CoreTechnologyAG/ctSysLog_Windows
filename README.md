@@ -1,15 +1,19 @@
 ctSysLog_Windows
 ================
 
-Logging Facility for getting the Windows Logfiles and Events into Logstash
+Logging Facility for getting the Windows Logfiles and Events into Logstash.
 
-With this Utility coded in VS Studio 2012 you can send your Windows Events and Logfiles to a Logstash Server
-You need to create a UDP or TCP Configuration to receive the Logentries from this Service
+
+With this Utility coded in VS Studio 2012 you can send your Windows Events and Logfiles to a Logstash Server.
+You need to create a UDP or TCP Configuration to receive the Logentries from this Service.
+
 
 To Install this Service check INSTALL.txt under ./Setup
 
+
 To the Logstash add something like this:
 
+```
 input {
 	....
   udp {
@@ -21,6 +25,7 @@ input {
     port => 6689
   }
 }
+
 filter {
   if [type] == "ctsyslog" {
     grok {
@@ -41,5 +46,6 @@ filter {
 output {
   ......
 }
+```
 
 Check the config.xml to get an idea, who configuration may work.
