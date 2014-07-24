@@ -1,0 +1,15 @@
+**** Install ****
+Kopieren von ctSysLog.exe und config.xml nach C:\ctSyslog
+Service Eintrag erstellen mit
+C:\ctSyslog>C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe ctSysLog.exe
+
+**** Configure ****
+Anpassen der Konfiguration (Edit config.xml)
+Setzen des Config Files. Diese Info wird in der Registry abgelegt.
+
+C:\ctSyslog>ctSysLog.exe C:\ctSyslog\config.xml
+
+Mit Enter beenden.
+
+**** Uninstall ****
+C:\ctSyslog>C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /u ctSysLog.exe
