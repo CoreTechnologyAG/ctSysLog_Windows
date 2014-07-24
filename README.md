@@ -49,3 +49,6 @@ output {
 ```
 
 Check the config.xml to get an idea, who configuration may work.
+
+
+License: GPL V3 See LICENSE.txt
